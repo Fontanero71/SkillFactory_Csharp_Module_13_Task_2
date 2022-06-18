@@ -50,10 +50,17 @@ namespace SkillFactory_Csharp_Module_13_Task_2
             val.Reverse (); //Сортируем по убыванию
 
             for (int i = 0; i < 10; i++)   //Для 10 первых (наибольших значений встречаемости) выводим слово (ключ)
-                                           // из словаря соответствующее значению
+                                           // из словаря и соответствующее значение
             {
-                var myKey = usualDict.FirstOrDefault(x => x.Value == val[i]).Key;
-                Console.WriteLine($"{myKey} = {val[i]}");
+                foreach (KeyValuePair<string, int> p in usualDict)  //Перебираем весь словарь на случай,
+                                                                    //когда разные слова имеют одинаковую частоту встречаемости
+                {
+                    if (p.Value == val[i])
+                        Console.WriteLine($"{p.Key} = {p.Value}");
+                }
+
+                //var myKey = usualDict.FirstOrDefault(x => x.Value == val[i]).Key; 
+                //Console.WriteLine($"{myKey} = {val[i]}");
             }
 
         }
